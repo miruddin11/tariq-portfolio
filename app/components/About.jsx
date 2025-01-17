@@ -40,12 +40,9 @@ const About = ({isDarkMode}) => {
         transition={{duration:0.6,delay:0.8}}
         className='flex-1'>
             <p className='mb-10 max-w-2xl font-Ovo'>
-                I am a Full Stack Developer with a passion for creating
-                beautiful and functional websites. I have a strong foundation
-                in web development and am constantly learning new technologies
-                to improve my skills. I have experience working with both
-                front-end and back-end technologies, and I am comfortable
-                working with a variety of programming languages and frameworks.
+                I am a Full Stack Developer driven to craft innovative web solutions. 
+                Proficient in both front-end and back-end technologies, 
+                I leverage a diverse tech stack to build dynamic, user-centric applications.
             </p>
             <motion.ul 
             initial={{opacity:0}}

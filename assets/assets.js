@@ -78,9 +78,15 @@ export const assets = {
 
 export const workData = [
     {
+        title: 'Talker',
+        description: 'Full Stack',
+        bgImage: '/work-5-1.png',
+        link: 'https://talker-chat-app.onrender.com/login'
+    },
+    {
         title: 'Rakshak',
         description: 'Full Stack App',
-        bgImage: '/work-1.png',
+        bgImage: '/work-1.jpg',
         link: 'https://rakshak-oze3.onrender.com/'
     },
     {
@@ -100,6 +106,12 @@ export const workData = [
         description: 'UI/UX Design',
         bgImage: '/work-4.png',
         link: 'https://miruddin11.github.io/Mir-s-Portfolio/'
+    },
+    {
+        title: 'Fuel Predictor',
+        description: 'Machine Learning',
+        bgImage: '/work-6.png',
+        link: 'https://mirsfuelapp.streamlit.app/'
     },
 ]
 
