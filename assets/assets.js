@@ -78,6 +78,12 @@ export const assets = {
 
 export const workData = [
     {
+        title: 'CodeSync',
+        description: 'Interview Platform',
+        bgImage: '/work-7.png',
+        link: 'https://remote-interview-rho.vercel.app/'
+    },
+    {
         title: 'Talker',
         description: 'Full Stack',
         bgImage: '/work-5-1.png',
