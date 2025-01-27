@@ -25,13 +25,13 @@ const Experience = ({isDarkMode}) => {
       whileInView={{opacity:1}}
       transition={{duration:1}}
       id="experience" 
-      className='w-full px-[12%] py-10 scroll-mt-20'
+      className='w-full px-[12%] py-16 scroll-mt-20 bg-gradient-to-b from-transparent to-gray-50/20 dark:to-gray-900/20'
     >
       <motion.h4
         initial={{y:-20,opacity:0}}
         whileInView={{y:0,opacity:1}}
         transition={{delay:0.3,duration:0.5}}
-        className='text-center mb-2 text-lg font-Ovo'
+        className='text-center mb-2 text-lg font-Ovo text-gray-600 dark:text-gray-300 tracking-wider'
       >
         Professional Journey
       </motion.h4>
@@ -40,7 +40,7 @@ const Experience = ({isDarkMode}) => {
         initial={{y:-20,opacity:0}}
         whileInView={{y:0,opacity:1}}
         transition={{delay:0.5,duration:0.5}}
-        className='text-center text-5xl font-Ovo'
+        className='text-center text-5xl font-Ovo text-gray-800 dark:text-white mb-4'
       >
         Work Experience
       </motion.h2>
@@ -49,7 +49,7 @@ const Experience = ({isDarkMode}) => {
         initial={{opacity:0}}
         whileInView={{opacity:1}}
         transition={{delay:0.7,duration:0.5}} 
-        className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'
+        className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo text-gray-600 dark:text-gray-300 leading-relaxed'
       >
         I have been working on diverse projects, gaining experience in full-stack development and delivering innovative solutions.
       </motion.p>
@@ -58,23 +58,47 @@ const Experience = ({isDarkMode}) => {
         initial={{opacity:0}}
         whileInView={{opacity:1}}
         transition={{delay:0.9,duration:0.6}} 
-        className='grid grid-cols-auto gap-6 my-10'
+        className='grid grid-cols-1 md:grid-cols-2 gap-8 my-10'
       >
         {experienceData.map(({icon, title, description, link}, index) => (
           <motion.div
             whileHover={{scale:1.05}}
             key={index} 
-            className='border border-gray-400 rounded-lg px-8 py-12 hover:shadow-black 
-            cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 dark:hover:bg-darkHover 
+            className='border border-gray-200 dark:border-gray-700 rounded-xl px-8 py-10 
+            transition-all duration-500 ease-in-out transform 
+            hover:shadow-lg hover:border-opacity-0
+            bg-white dark:bg-gray-800/50 
+            hover:bg-lightHover dark:hover:bg-darkHover
             dark:hover:shadow-white'
           >
-            <Image src={icon} alt='' className='w-10'/>
-            <h3 className='text-lg my-4 text-gray-700 dark:text-white'>{title}</h3>
-            <p className='text-sm text-gray-600 leading-5 dark:text-white/80'>
+            <div className='flex items-center mb-5'>
+              <Image 
+                src={icon} 
+                alt='' 
+                width={40} 
+                height={40} 
+                className='mr-4 opacity-80 group-hover:opacity-100 transition-opacity'
+              />
+              <h3 className='text-xl font-semibold text-gray-800 dark:text-white'>{title}</h3>
+            </div>
+            <p className='text-sm text-gray-600 leading-6 dark:text-gray-300 mb-6'>
               {description}
             </p>
-            <a href={link} className='flex items-center gap-2 mt-5 text-sm'>
-              View Details <Image src={assets.right_arrow} alt='' className='w-4'/>
+            <a 
+              href={link} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className='flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 
+              hover:text-blue-800 dark:hover:text-blue-300 transition-colors group'
+            >
+              View Details 
+              <Image 
+                src={assets.right_arrow} 
+                alt='View Details' 
+                width={16} 
+                height={16} 
+                className='transition-transform group-hover:translate-x-1'
+              />
             </a>
           </motion.div>
         ))}

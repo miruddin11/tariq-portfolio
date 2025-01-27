@@ -182,17 +182,17 @@ const Cp = ({ isDarkMode }) => {
               <p className="text-sm text-gray-500 mt-2">Please check your connection or try again later</p>
             </div>
           ) : leetcodeStats ? (
-            <div className="grid grid-cols-2 gap-1">
+            <div className="grid grid-cols-2 gap-2">
               {/* Total Solved */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="bg-white dark:bg-gray-800 rounded-lg p-1 text-center shadow-md hover:shadow-lg transition-all duration-300 col-span-2"
+                className="bg-white dark:bg-gray-800 rounded-lg p-2 text-center shadow-md hover:shadow-lg transition-all duration-300 col-span-2"
               >
-                <p className="font-semibold text-[10px] text-gray-600 dark:text-gray-300">Total Solved</p>
-                <p className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                <p className="font-semibold text-xs text-gray-600 dark:text-gray-300">Total Solved</p>
+                <p className="text-xl font-bold text-blue-600 dark:text-blue-400">
                   {leetcodeStats.totalSolved || 'N/A'}
                 </p>
-                <div className="flex justify-between text-[8px] text-gray-500 mt-0.5">
+                <div className="flex justify-between text-xs text-gray-500 mt-1">
                   <span>Acceptance: {leetcodeStats.acceptanceRate}%</span>
                   <span>Ranking: {leetcodeStats.ranking}</span>
                 </div>
@@ -201,9 +201,9 @@ const Cp = ({ isDarkMode }) => {
               {/* Easy Problems */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="bg-green-50 dark:bg-green-900 rounded-lg p-1 text-center shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-green-50 dark:bg-green-900 rounded-lg p-2 text-center shadow-md hover:shadow-lg transition-all duration-300"
               >
-                <p className="font-semibold text-[10px] text-green-700 dark:text-green-300">Easy</p>
+                <p className="font-semibold text-xs text-green-700 dark:text-green-300">Easy</p>
                 <p className="text-base font-bold text-green-600 dark:text-green-400">
                   {leetcodeStats.easySolved || 0}
                 </p>
@@ -212,9 +212,9 @@ const Cp = ({ isDarkMode }) => {
               {/* Medium Problems */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="bg-yellow-50 dark:bg-yellow-900 rounded-lg p-1 text-center shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-yellow-50 dark:bg-yellow-900 rounded-lg p-2 text-center shadow-md hover:shadow-lg transition-all duration-300"
               >
-                <p className="font-semibold text-[10px] text-yellow-700 dark:text-yellow-300">Medium</p>
+                <p className="font-semibold text-xs text-yellow-700 dark:text-yellow-300">Medium</p>
                 <p className="text-base font-bold text-yellow-600 dark:text-yellow-400">
                   {leetcodeStats.mediumSolved || 0}
                 </p>
@@ -223,9 +223,9 @@ const Cp = ({ isDarkMode }) => {
               {/* Hard Problems */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="bg-red-50 dark:bg-red-900 rounded-lg p-1 text-center shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-red-50 dark:bg-red-900 rounded-lg p-2 text-center shadow-md hover:shadow-lg transition-all duration-300"
               >
-                <p className="font-semibold text-[10px] text-red-700 dark:text-red-300">Hard</p>
+                <p className="font-semibold text-xs text-red-700 dark:text-red-300">Hard</p>
                 <p className="text-base font-bold text-red-600 dark:text-red-400">
                   {leetcodeStats.hardSolved || 0}
                 </p>
