@@ -8,6 +8,8 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Experience from "./components/Experience";
+import Academics from "./components/Academics";
+
 
 export default function Home() {
 
@@ -42,6 +44,7 @@ export default function Home() {
     <Cp isDarkMode={isDarkMode}/>
     <Projects isDarkMode={isDarkMode}/>
     <Experience isDarkMode={isDarkMode}/>
+    <Academics isDarkMode={isDarkMode}/>
     <Contact isDarkMode={isDarkMode}/>
     <Footer isDarkMode={isDarkMode}/>
     </>

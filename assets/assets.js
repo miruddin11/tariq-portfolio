@@ -90,6 +90,12 @@ export const workData = [
         link: 'https://talker-chat-app.onrender.com/login'
     },
     {
+        title: 'CrimeSafe',
+        description: 'Report Crime',
+        bgImage: '/work-8.png',
+        link: 'https://crime-safe.vercel.app/'
+    },
+    {
         title: 'Rakshak',
         description: 'Full Stack App',
         bgImage: '/work-1.jpg',

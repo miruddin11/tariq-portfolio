@@ -1,9 +1,17 @@
 import { assets, workData } from '@/assets/assets'
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
 import { motion } from "motion/react";
 
 const Projects = ({isDarkMode}) => {
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedProjects = showAll ? workData : workData.slice(0, 6);
+
+  const toggleProjects = () => {
+    setShowAll(!showAll);
+  };
+
   return (
     <motion.div
     initial={{opacity:0}}
@@ -34,7 +42,7 @@ const Projects = ({isDarkMode}) => {
       whileInView={{opacity:1}}
       transition={{delay:0.9,duration:0.6}}
       className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-10 gap-8 dark:text-black'>
-        {workData.map((project, index) => (
+        {displayedProjects.map((project, index) => (
             <motion.div
             whileHover={{scale:1.05}}
             transition={{duration:0.3}}
@@ -62,21 +70,24 @@ const Projects = ({isDarkMode}) => {
         </motion.div>
         ))}
     </motion.div>
-    <motion.a 
-    initial={{opacity:0}}
-    whileInView={{opacity:1}}
-    transition={{delay:1.3,duration:0.6}}
-    href="" className='w-max flex items-center justify-center gap-3 
-    text-gray-700 border-[0.5px] border-gray-700 rounded-full py-4 px-12 mx-auto mt-10
-    hover:bg-lightHover duration-500 dark:text-white dark:border-white 
-    dark:hover:bg-darkHover transition group'>
-      Show more
-      <Image 
-        src={isDarkMode? assets.right_arrow_bold_dark : assets.right_arrow_bold} 
-        alt='Right arrow'
-        className='w-5 ml-2 group-hover:translate-x-1 transition duration-300'
-      />
-    </motion.a>
+    {workData.length > 2 && (
+      <motion.button 
+      onClick={toggleProjects}
+      initial={{opacity:0}}
+      whileInView={{opacity:1}}
+      transition={{delay:1.2,duration:0.6}}
+      className='w-max flex items-center justify-center gap-3 
+      text-gray-700 border-[0.5px] border-gray-700 rounded-full py-4 px-12 mx-auto mt-10
+      hover:bg-lightHover duration-500 dark:text-white dark:border-white 
+      dark:hover:bg-darkHover transition group'>
+        {showAll ? 'Show Less' : 'Show More'}
+        <Image 
+          src={isDarkMode? assets.right_arrow_bold_dark : assets.right_arrow_bold} 
+          alt='Right arrow'
+          className='w-5 ml-2 group-hover:translate-x-1 transition duration-300'
+        />
+      </motion.button>
+    )}
    </motion.div>
   )
 }
