@@ -9,8 +9,6 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Experience from "./components/Experience";
 import Academics from "./components/Academics";
-
-
 export default function Home() {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
