@@ -109,17 +109,17 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
                             className='w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity'
                         />
                     </button>
-                    <ul className='flex flex-col items-center gap-8 mt-8'>
+                    <ul className='flex flex-col items-center gap-4 mt-8'>
                         {mobileMenuItems.map((item, index) => (
                             <li key={index} className='w-full text-center'>
                                 <a 
-                                    className='text-2xl font-Ovo 
+                                    className='text-xl font-Ovo 
                                     text-gray-700 dark:text-gray-200 
                                     hover:text-rose-500 dark:hover:text-rose-300 
                                     focus:text-rose-600 dark:focus:text-rose-200
                                     active:scale-95 
                                     transition-all duration-200 
-                                    px-6 py-3 block 
+                                    px-4 py-2 block 
                                     rounded-xl 
                                     hover:bg-gray-100 dark:hover:bg-gray-800' 
                                     href={item.href} 
