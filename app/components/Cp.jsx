@@ -103,21 +103,48 @@ const Cp = ({ isDarkMode }) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        className="grid grid-cols-auto gap-6 my-10"
+        className="grid grid-cols-1 md:grid-cols-4 gap-6 my-10"
       >
         {serviceData.map(({ icon, title, description, link }, index) => (
           <motion.div
             whileHover={{ scale: 1.05 }}
             key={index}
-            className="border border-gray-400 rounded-lg px-8 py-12 hover:shadow-black 
-            cursor pointer hover:bg-lightHover hover:-translate-y-1 duration-500 dark:hover:bg-darkHover 
-            dark:hover:shadow-white"
+            className="relative group border-2 border-gray-300 rounded-2xl px-8 py-12 
+            transition-all duration-500 ease-in-out
+            hover:border-blue-500 hover:shadow-2xl 
+            dark:border-gray-700 
+            dark:hover:border-blue-300
+            overflow-hidden"
           >
-            <Image src={icon} alt="" className="w-10" />
-            <h3 className="text-lg my-4 text-gray-700 dark:text-white">{title}</h3>
-            <p className="text-sm text-gray-600 leading-5 dark:text-white/80">{description}</p>
-            <a href={link} className="flex items-center gap-2 mt-5 text-sm">
-              Visit Profile <Image src={assets.right_arrow} alt="" className="w-4" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r 
+            from-blue-500 to-blue-300 
+            dark:from-blue-300 dark:to-blue-500 
+            transform scale-x-0 group-hover:scale-x-100 
+            transition-transform duration-500 origin-left"></div>
+            <Image 
+              src={icon} 
+              alt="" 
+              className="w-12 mb-4 transition-transform group-hover:rotate-12"
+            />
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 
+            dark:text-white transition-colors group-hover:text-blue-600 
+            dark:group-hover:text-blue-300">{title}</h3>
+            <p className="text-sm text-gray-600 leading-6 mb-6 
+            dark:text-gray-300 opacity-80">{description}</p>
+            <a 
+              href={link} 
+              className="flex items-center gap-2 text-sm font-medium 
+              text-blue-600 dark:text-blue-300 
+              hover:underline hover:text-blue-800 
+              dark:hover:text-blue-200 
+              transition-colors"
+            >
+              Visit Profile 
+              <Image 
+                src={assets.right_arrow} 
+                alt="" 
+                className="w-4 transform group-hover:translate-x-1 transition-transform"
+              />
             </a>
           </motion.div>
         ))}
@@ -128,40 +155,64 @@ const Cp = ({ isDarkMode }) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 1.1, duration: 0.6 }}
-        className="flex flex-col md:flex-row justify-center items-center gap-10 mt-10"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10"
       >
         {/* GitHub Contributions */}
         <motion.div 
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
-          className="w-full max-w-xl border border-gray-400 rounded-lg px-8 py-12 hover:shadow-black 
-          cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 dark:hover:bg-darkHover 
-          dark:hover:shadow-white transform transition-all ease-in-out"
+          className="w-full border-2 border-gray-300 rounded-2xl p-6 
+          hover:border-green-500 hover:shadow-2xl 
+          dark:border-gray-700 dark:hover:border-green-300 
+          transition-all duration-500 group"
         >
-          <h3 className="text-lg my-4 text-gray-700 dark:text-white text-center">
+          <h3 className="text-xl font-semibold mb-4 text-center 
+          text-gray-800 dark:text-white 
+          group-hover:text-green-600 dark:group-hover:text-green-300 
+          transition-colors">
             GitHub Contributions
           </h3>
           {githubStats ? (
-            <div className="space-y-4">
+            <div className="space-y-6">
               <img
                 src={`https://ghchart.rshah.org/${githubUsername}`}
                 alt="GitHub Contribution Chart"
-                className="w-full rounded-lg border border-gray-200 dark:border-gray-700"
+                className="w-full rounded-xl border border-gray-200 
+                dark:border-gray-700 shadow-md 
+                transition-transform group-hover:scale-105"
               />
-              <div className="flex justify-between items-center text-sm text-gray-600 dark:text-gray-300">
-                <span>Contributions: {githubStats.contributionsLastYear}</span>
+              <div className="flex justify-between items-center text-sm 
+              text-gray-600 dark:text-gray-300">
+                <span className="font-medium">
+                  Contributions: 
+                  <span className="ml-2 text-green-600 dark:text-green-300">
+                    {githubStats.contributionsLastYear}
+                  </span>
+                </span>
                 <a 
                   href={githubStats.profileUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm"
+                  className="flex items-center gap-2 text-sm 
+                  text-green-600 dark:text-green-300 
+                  hover:underline hover:text-green-800 
+                  dark:hover:text-green-200 
+                  transition-colors"
                 >
-                  View Profile <Image src={assets.right_arrow} alt="" className="w-4" />
+                  View Profile 
+                  <Image 
+                    src={assets.right_arrow} 
+                    alt="" 
+                    className="w-4 transform group-hover:translate-x-1 
+                    transition-transform"
+                  />
                 </a>
               </div>
             </div>
           ) : (
-            <p className="text-center text-gray-500 animate-pulse">Loading GitHub stats...</p>
+            <p className="text-center text-gray-500 animate-pulse">
+              Loading GitHub stats...
+            </p>
           )}
         </motion.div>
 
@@ -169,30 +220,44 @@ const Cp = ({ isDarkMode }) => {
         <motion.div 
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
-          className="w-full max-w-md border border-gray-400 rounded-lg px-4 py-6 hover:shadow-black 
-          cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 dark:hover:bg-darkHover 
-          dark:hover:shadow-white transform transition-all ease-in-out"
+          className="w-full border-2 border-gray-300 rounded-2xl p-6 
+          hover:border-purple-500 hover:shadow-2xl 
+          dark:border-gray-700 dark:hover:border-purple-300 
+          transition-all duration-500 group"
         >
-          <h3 className="text-md my-2 text-gray-700 dark:text-white text-center">
+          <h3 className="text-xl font-semibold mb-4 text-center 
+          text-gray-800 dark:text-white 
+          group-hover:text-purple-600 dark:group-hover:text-purple-300 
+          transition-colors">
             LeetCode Progress
           </h3>
           {error ? (
             <div className="text-center text-red-500">
               <p>Unable to fetch LeetCode stats</p>
-              <p className="text-sm text-gray-500 mt-2">Please check your connection or try again later</p>
+              <p className="text-sm text-gray-500 mt-2">
+                Please check your connection or try again later
+              </p>
             </div>
           ) : leetcodeStats ? (
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-4">
               {/* Total Solved */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="bg-white dark:bg-gray-800 rounded-lg p-2 text-center shadow-md hover:shadow-lg transition-all duration-300 col-span-2"
+                className="bg-white dark:bg-gray-800 rounded-xl p-4 
+                text-center shadow-md hover:shadow-lg 
+                transition-all duration-300 col-span-3 
+                border border-purple-100 dark:border-purple-900"
               >
-                <p className="font-semibold text-xs text-gray-600 dark:text-gray-300">Total Solved</p>
-                <p className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                <p className="font-medium text-xs text-gray-600 
+                dark:text-gray-300 mb-1">
+                  Total Solved
+                </p>
+                <p className="text-2xl font-bold text-purple-600 
+                dark:text-purple-400 mb-2">
                   {leetcodeStats.totalSolved || 'N/A'}
                 </p>
-                <div className="flex justify-between text-xs text-gray-500 mt-1">
+                <div className="flex justify-between text-xs 
+                text-gray-500 dark:text-gray-400">
                   <span>Acceptance: {leetcodeStats.acceptanceRate}%</span>
                   <span>Ranking: {leetcodeStats.ranking}</span>
                 </div>
@@ -201,10 +266,16 @@ const Cp = ({ isDarkMode }) => {
               {/* Easy Problems */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="bg-green-50 dark:bg-green-900 rounded-lg p-2 text-center shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-green-50 dark:bg-green-900 rounded-xl p-4 
+                text-center shadow-md hover:shadow-lg 
+                transition-all duration-300"
               >
-                <p className="font-semibold text-xs text-green-700 dark:text-green-300">Easy</p>
-                <p className="text-base font-bold text-green-600 dark:text-green-400">
+                <p className="font-medium text-xs text-green-700 
+                dark:text-green-300 mb-1">
+                  Easy
+                </p>
+                <p className="text-base font-bold text-green-600 
+                dark:text-green-400 mb-2">
                   {leetcodeStats.easySolved || 0}
                 </p>
               </motion.div>
@@ -212,10 +283,16 @@ const Cp = ({ isDarkMode }) => {
               {/* Medium Problems */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="bg-yellow-50 dark:bg-yellow-900 rounded-lg p-2 text-center shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-yellow-50 dark:bg-yellow-900 rounded-xl p-4 
+                text-center shadow-md hover:shadow-lg 
+                transition-all duration-300"
               >
-                <p className="font-semibold text-xs text-yellow-700 dark:text-yellow-300">Medium</p>
-                <p className="text-base font-bold text-yellow-600 dark:text-yellow-400">
+                <p className="font-medium text-xs text-yellow-700 
+                dark:text-yellow-300 mb-1">
+                  Medium
+                </p>
+                <p className="text-base font-bold text-yellow-600 
+                dark:text-yellow-400 mb-2">
                   {leetcodeStats.mediumSolved || 0}
                 </p>
               </motion.div>
@@ -223,16 +300,24 @@ const Cp = ({ isDarkMode }) => {
               {/* Hard Problems */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="bg-red-50 dark:bg-red-900 rounded-lg p-2 text-center shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-red-50 dark:bg-red-900 rounded-xl p-4 
+                text-center shadow-md hover:shadow-lg 
+                transition-all duration-300"
               >
-                <p className="font-semibold text-xs text-red-700 dark:text-red-300">Hard</p>
-                <p className="text-base font-bold text-red-600 dark:text-red-400">
+                <p className="font-medium text-xs text-red-700 
+                dark:text-red-300 mb-1">
+                  Hard
+                </p>
+                <p className="text-base font-bold text-red-600 
+                dark:text-red-400 mb-2">
                   {leetcodeStats.hardSolved || 0}
                 </p>
               </motion.div>
             </div>
           ) : (
-            <p className="text-center text-gray-500 animate-pulse">Loading LeetCode stats...</p>
+            <p className="text-center text-gray-500 animate-pulse">
+              Loading LeetCode stats...
+            </p>
           )}
         </motion.div>
       </motion.div>

@@ -71,9 +71,11 @@ const About = ({isDarkMode}) => {
               variants={itemVariants}
               className='mb-10 max-w-2xl font-Ovo text-gray-700 dark:text-gray-300'
             >
-              I am a Full Stack Developer passionate about crafting innovative web solutions. 
-              With expertise in both front-end and back-end technologies, I create dynamic, 
-              user-centric applications that solve real-world problems.
+              Code is my canvas, and technology is my paintbrush. As a Full Stack Developer, 
+              I craft digital experiences that breathe life into ideas, transforming complex 
+              concepts into intuitive, high-performance web applications. Specializing in 
+              React, Next.js, and Node.js, I don't just write code—I engineer solutions that 
+              push the boundaries of what's possible, one line at a time.
             </motion.p>
 
             {/* Key Info Grid */}
@@ -119,8 +121,11 @@ const About = ({isDarkMode}) => {
                     key={index}
                     whileHover={{scale:1.1}}
                     className='flex items-center justify-center w-12 sm:w-14 aspect-square 
-                    border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 
-                    duration-500'
+                    border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer 
+                    hover:-translate-y-1 duration-500 
+                    hover:shadow-lg hover:border-opacity-0
+                    hover:bg-lightHover dark:hover:bg-darkHover
+                    dark:hover:shadow-white'
                   >
                     <Image 
                       src={tool} 

@@ -41,30 +41,51 @@ const Projects = ({isDarkMode}) => {
       initial={{opacity:0}}
       whileInView={{opacity:1}}
       transition={{delay:0.9,duration:0.6}}
-      className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-10 gap-8 dark:text-black'>
+      className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-10 gap-8'>
         {displayedProjects.map((project, index) => (
             <motion.div
             whileHover={{scale:1.05}}
             transition={{duration:0.3}}
             key={index} 
-            className='relative aspect-video bg-cover bg-center rounded-lg overflow-hidden group'
+            className='relative aspect-video bg-cover bg-center rounded-2xl overflow-hidden group 
+            shadow-lg hover:shadow-2xl transition-all duration-500 
+            border-2 border-transparent hover:border-blue-500 
+            dark:border-gray-700 dark:hover:border-blue-300'
             style={{ backgroundImage: `url(${project.bgImage})` }}>
             <div 
-            className='absolute bottom-0 left-0 right-0 bg-white w-10/12 rounded-md mx-auto mb-5 py-3 px-5
-             flex items-center justify-between duration-500 group-hover:bottom-7'>
+            className='absolute bottom-0 left-0 right-0 
+            bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm 
+            w-11/12 rounded-xl mx-auto mb-6 py-4 px-6
+            flex items-center justify-between 
+            shadow-lg transition-all duration-500 
+            transform group-hover:-translate-y-2 
+            dark:text-white'>
             <div>
-            <h2 className='font-semibold'>{project.title}</h2>
-            <p className='text-sm text-gray-700'>{project.description}</p>
+            <h2 className='font-bold text-lg text-gray-800 dark:text-white 
+            mb-1 transition-colors group-hover:text-blue-600 
+            dark:group-hover:text-blue-300'>{project.title}</h2>
+            <p className='text-sm text-gray-600 dark:text-gray-300 
+            line-clamp-2'>{project.description}</p>
             </div>
             <div 
-            className='border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition'>
-            <motion.a 
-            initial={{opacity:0}}
-            whileInView={{opacity:1}}
-            transition={{delay:1.1,duration:0.5}}
-            href={project.link} target='_blank' rel='noopener noreferrer'>
-                <Image src={assets.send_icon} alt='send icon' className='w-5' />
-            </motion.a>
+            className='w-12 h-12 rounded-full 
+            bg-blue-500 dark:bg-blue-300 text-white 
+            flex items-center justify-center 
+            shadow-lg hover:shadow-xl 
+            transform transition-all duration-300 
+            hover:rotate-12 hover:scale-110'>
+             <motion.a 
+             initial={{opacity:0}}
+             whileInView={{opacity:1}}
+             transition={{delay:1.1,duration:0.5}}
+             href={project.link} target='_blank' rel='noopener noreferrer'>
+                <Image 
+                  src={assets.send_icon} 
+                  alt='send icon' 
+                  className='w-6 filter brightness-0 invert 
+                  dark:filter-none'
+                />
+             </motion.a>
             </div>
           </div>
         </motion.div>
