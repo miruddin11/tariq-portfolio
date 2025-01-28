@@ -8,7 +8,7 @@ const experienceData = [
     icon: assets.project_icon,
     title: "Software Development Intern",
     company: "ITJOBXS",
-    period: "Jan 2023 - Present",
+    period: "Oct 2023 - Mar 2024",
     description: "Developed responsive webpage for ITJOBXS, collaborating with design team to create user-friendly layouts and optimize performance, resulting in 70% increase in user traffic.",
     link: "https://itjobxs.com",
     skills: ["HTML", "CSS", "JavaScript", "SQL"]
@@ -17,7 +17,7 @@ const experienceData = [
     icon: assets.project_icon,
     title: "Competitive Programming Lead",
     company: "CodeChef OUTR Chapter",
-    period: "Aug 2022 - Dec 2023",
+    period: "Jan 2024 - Dec 2024",
     description: "Boosted member engagement by 50% by organizing targeted training sessions, curated challenges in Java and C++, and contests focused on enhancing coding skills and proficiency in Data Structures and Algorithms",
     link: "https://www.linkedin.com/company/codechef-outr-bbsr-chapter/posts/?feedView=all",
     skills: ["C++", "Java", "Algorithms"]

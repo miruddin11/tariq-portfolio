@@ -27,6 +27,7 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
         { label: 'Coding', href: '#cp' },
         { label: 'Projects', href: '#projects' },
         { label: 'Academics', href: '#academics' },
+        { label: 'Experience', href: '#experience' },
         { label: 'Contact Me', href: '#contact' }
     ];
 
@@ -87,24 +88,43 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
 
             {/* Full-screen Mobile Menu Overlay */}
             {isMobileMenuOpen && (
-                <div className='fixed inset-0 z-[100] bg-white dark:bg-black bg-opacity-95 dark:bg-opacity-95 flex flex-col items-center justify-center'>
+                <div 
+                    className='fixed inset-0 z-[100] bg-white dark:bg-black bg-opacity-95 dark:bg-opacity-95 flex flex-col items-center justify-center 
+                    transition-all duration-300 ease-in-out transform 
+                    animate-fade-in-down'
+                    role="dialog" 
+                    aria-modal="true" 
+                    aria-label="Mobile Navigation Menu"
+                >
                     <button 
-                        className='absolute top-6 right-6 p-8' 
+                        className='absolute top-6 right-6 p-8 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group' 
                         onClick={toggleMobileMenu}
+                        aria-label="Close Mobile Menu"
                     >
                         <Image 
                             src={isDarkMode ? assets.close_white : assets.close_black} 
                             alt='Close' 
-                            className='w-6'
+                            width={24}
+                            height={24}
+                            className='w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity'
                         />
                     </button>
-                    <ul className='flex flex-col items-center gap-6'>
+                    <ul className='flex flex-col items-center gap-8 mt-8'>
                         {mobileMenuItems.map((item, index) => (
-                            <li key={index}>
+                            <li key={index} className='w-full text-center'>
                                 <a 
-                                    className='text-2xl font-Ovo hover:text-rose-500 dark:hover:text-rose-300 transition-colors' 
+                                    className='text-2xl font-Ovo 
+                                    text-gray-700 dark:text-gray-200 
+                                    hover:text-rose-500 dark:hover:text-rose-300 
+                                    focus:text-rose-600 dark:focus:text-rose-200
+                                    active:scale-95 
+                                    transition-all duration-200 
+                                    px-6 py-3 block 
+                                    rounded-xl 
+                                    hover:bg-gray-100 dark:hover:bg-gray-800' 
                                     href={item.href} 
                                     onClick={toggleMobileMenu}
+                                    role="menuitem"
                                 >
                                     {item.label}
                                 </a>
