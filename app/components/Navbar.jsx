@@ -7,10 +7,12 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
     const [isScroll, setIsScroll] = useState(false);
     const sideMenuRef= useRef();
     const openMenu = () => {
-        sideMenuRef.current.style.transform = 'translateX(-16rem)';
+        sideMenuRef.current.classList.remove('translate-x-full');
+        sideMenuRef.current.classList.add('translate-x-0');
     }
     const closeMenu = () => {
-        sideMenuRef.current.style.transform = 'translateX(16rem)';
+        sideMenuRef.current.classList.remove('translate-x-0');
+        sideMenuRef.current.classList.add('translate-x-full');
     }
 
     useEffect(()=>{
@@ -87,8 +89,9 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
 
             {/* -- ----- mobile menu ------- ---*/}
 
-            <ul ref={sideMenuRef} className='flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64
-            top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white'>
+            <ul ref={sideMenuRef} className='flex md:hidden flex-col gap-4 py-20 px-10 fixed top-0 bottom-0 right-0 w-64 z-50 h-screen 
+            bg-rose-50 transition-transform duration-500 translate-x-full 
+            dark:bg-darkHover dark:text-white'>
                 <div className='absolute top-6 right-6 ' onClick={closeMenu}>
                     <Image src={isDarkMode? assets.close_white :assets.close_black} alt='' className='w-5 cursor-pointer'/>
                 </div>
