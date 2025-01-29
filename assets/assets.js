@@ -29,12 +29,18 @@ import close_black from './close-black.png';
 import close_white from './close-white.png';
 import web_icon from './web-icon.png';
 import mobile_icon from './mobile-icon.png';
-import ui_icon from './ui-icon.png';
 import graphics_icon from './graphics-icon.png';
 import right_arrow from './right-arrow.png';
 import send_icon from './send-icon.png';
 import right_arrow_bold from './right-arrow-bold.png';
 import right_arrow_bold_dark from './right-arrow-bold-dark.png';
+import mysql from './mysql.png';
+import github from './github.png';
+import node from './node.png';
+import postgre from './postgre.png';
+import vite from './vite.png';
+import codechef from './codechef.png';
+
 
 export const assets = {
     user_image,
@@ -68,12 +74,17 @@ export const assets = {
     close_white,
     web_icon,
     mobile_icon,
-    ui_icon,
     graphics_icon,
     right_arrow,
     send_icon,
     right_arrow_bold,
-    right_arrow_bold_dark
+    right_arrow_bold_dark,
+    mysql,
+    github,
+    node,
+    postgre,
+    vite,
+    codechef
 };
 
 export const workData = [
@@ -130,7 +141,7 @@ export const workData = [
 export const serviceData = [
     { icon: assets.web_icon, title: 'LeetCode', description: 'LeetCode (Knight, Rating: 2081): Global ranks: 350/26,000 and 843/30,000.', link: 'https://leetcode.com/u/mirtariq/' },
     { icon: assets.mobile_icon, title: 'GeeksforGeeks', description: 'GeeksforGeeks (Level 4, Rating: 1931 ,Campus Rank: 6): Global rank: 64 , 85/4,000.', link: 'https://www.geeksforgeeks.org/user/mirtariq/' },
-    { icon: assets.ui_icon, title: 'Codechef', description: 'CodeChef (5-Star, Rating: 2000): Global ranks: 8, 12, 35/35,000. Ranked 2,300/4.5M users.', link: 'https://www.codechef.com/users/infinity_11' },
+    { icon: assets.codechef, title: 'Codechef', description: 'CodeChef (5-Star, Rating: 2000): Global ranks: 8, 12, 35/35,000. Ranked 2,300/4.5M users.', link: 'https://www.codechef.com/users/infinity_11' },
     { icon: assets.graphics_icon, title: 'Codeforces', description: 'Codeforces (Specialist, Rating: 1455): Global rank: 114/40,000 in Round 928 (Div 4).', link: 'https://codeforces.com/profile/Nirmali18' },
 ]
 
@@ -141,5 +152,5 @@ export const infoList = [
 ];
 
 export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
+    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git, assets.mysql , assets.postgre, assets.vite, assets.node, assets.github
 ];

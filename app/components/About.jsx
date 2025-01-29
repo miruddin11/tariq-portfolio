@@ -113,14 +113,14 @@ const About = ({isDarkMode}) => {
                 Tools I Use
               </h4>
               <motion.div 
-                className='flex items-center gap-3 sm:gap-5'
+                className='grid grid-cols-4 sm:grid-cols-7 gap-3 sm:gap-5'
                 variants={containerVariants}
               >
                 {toolsData.map((tool, index) => (
                   <motion.div
                     key={index}
                     whileHover={{scale:1.1}}
-                    className='flex items-center justify-center w-12 sm:w-14 aspect-square 
+                    className='flex items-center justify-center w-full aspect-square 
                     border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer 
                     hover:-translate-y-1 duration-500 
                     hover:shadow-lg hover:border-opacity-0

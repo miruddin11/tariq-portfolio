@@ -47,7 +47,16 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
                 <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"}`}>
                     {mobileMenuItems.map((item, index) => (
                         <li key={index}>
-                            <a className='font-Ovo' href={item.href}>{item.label}</a>
+                            <a 
+                                className='font-Ovo 
+                                transition-all duration-300 
+                                hover:border-b-2 hover:border-blue-500 
+                                hover:scale-105 
+                                active:scale-95' 
+                                href={item.href}
+                            >
+                                {item.label}
+                            </a>
                         </li>
                     ))}
                 </ul>
@@ -56,7 +65,7 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
                         <Image 
                             src={isDarkMode ? assets.sun_icon : assets.moon_icon} 
                             alt='Theme Toggle' 
-                            className='w-6'
+                            className='w-6 transition-transform duration-500 hover:rotate-180'
                         />
                     </button>
                     <a 
