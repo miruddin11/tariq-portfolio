@@ -26,8 +26,8 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
         { label: 'About Me', href: '#about' },
         { label: 'Coding', href: '#cp' },
         { label: 'Projects', href: '#projects' },
-        { label: 'Academics', href: '#academics' },
         { label: 'Experience', href: '#experience' },
+        { label: 'Academics', href: '#academics' },
         { label: 'Contact Me', href: '#contact' }
     ];
 
