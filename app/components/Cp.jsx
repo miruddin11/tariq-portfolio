@@ -318,6 +318,7 @@ const Cp = ({ isDarkMode }) => {
             <p className="text-center text-gray-500 animate-pulse">
               Loading LeetCode stats...
             </p>
+
           )}
         </motion.div>
       </motion.div>
