@@ -1,5 +1,7 @@
 import React from 'react'
 import { motion } from "motion/react"
+import Image from 'next/image'
+import UniversityLogo from '@/assets/university-logo.png'
 
 const academicData = [
   { 
@@ -54,13 +56,38 @@ const Academics = ({isDarkMode}) => {
       aria-label="Academic Performance Timeline"
       className='w-full px-4 md:px-[12%] py-6 md:py-10 scroll-mt-20'
     >
+      {/* University Details Section */}
+      <motion.div
+        initial={{opacity:0, y: 20}}
+        whileInView={{opacity:1, y:0}}
+        transition={{duration:0.6}}
+        className='flex flex-col items-center mb-10 space-y-4'
+      >
+        <Image 
+          src={UniversityLogo} 
+          alt="Odisha University of Technology and Research Logo" 
+          width={150} 
+          height={150} 
+          className='mb-4 p-2 bg-white rounded-xl shadow-md dark:bg-blue-100 dark:brightness-100'
+        />
+        <h2 className='text-2xl md:text-3xl font-bold text-blue-900 dark:text-blue-200 text-center'>
+          Odisha University of Technology and Research
+        </h2>
+        <p className='text-base md:text-lg text-gray-700 dark:text-gray-300 text-center'>
+          Bachelor of Technology in Computer Science and Engineering
+        </p>
+        <p className='text-sm md:text-base text-gray-600 dark:text-gray-400 text-center'>
+          4th Year | 8th Semester | Bhubaneswar, Odisha
+        </p>
+      </motion.div>
+
       <motion.h4
         initial={{y:-20,opacity:0}}
         whileInView={{y:0,opacity:1}}
         transition={{delay:0.3,duration:0.5}}
         className='text-center mb-2 text-base md:text-lg font-Ovo text-blue-900 dark:text-blue-200'
       >
-        Academic Journey
+        Academic Voyage at <span className="text-blue-600 dark:text-blue-300">OUTR</span>
       </motion.h4>
       
       <motion.h2 
@@ -69,7 +96,7 @@ const Academics = ({isDarkMode}) => {
         transition={{delay:0.5,duration:0.5}}
         className='text-center text-3xl md:text-5xl font-Ovo text-blue-950 dark:text-blue-100'
       >
-        Semester Performance
+        Semester Performance <span className="text-blue-600 dark:text-blue-300">Decoded</span>
       </motion.h2>
       
       <motion.p 
@@ -78,67 +105,62 @@ const Academics = ({isDarkMode}) => {
         transition={{delay:0.7,duration:0.5}} 
         className='text-center max-w-2xl mx-auto mt-3 md:mt-5 mb-6 md:mb-12 text-sm md:text-base font-Ovo text-gray-700 dark:text-gray-300'
       >
-        A comprehensive overview of my academic progression, highlighting consistent excellence and growth.
+        Unveiling my academic journey at Odisha University of Technology and Research (OUTR), 
+        a narrative of consistent excellence and intellectual growth across semesters.
       </motion.p>
       
-      <div className="relative w-full max-w-4xl mx-auto py-2 md:py-6">
-        {/* Vertical Timeline Line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b from-blue-400/50 to-blue-600/50 dark:from-blue-600/50 dark:to-blue-800/50 h-full max-md:hidden"></div>
-        
-        <div className="space-y-4 md:space-y-6">
+      <div className="w-full max-w-5xl mx-auto px-4 py-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {academicData.map((semester, index) => (
             <motion.div
               key={index}
-              initial={{opacity:0, x: index % 2 === 0 ? -50 : 50}}
-              whileInView={{opacity:1, x:0}}
-              transition={{duration:0.6, delay:0.2 * index}}
-              className={`flex items-center w-full relative 
-                ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}
-                max-md:flex-col max-md:items-center max-md:space-y-2`}
+              initial={{opacity: 0, scale: 0.9}}
+              whileInView={{opacity: 1, scale: 1}}
+              transition={{duration: 0.5, delay: index * 0.1}}
+              whileHover={{scale: 1.05}}
+              className={`
+                bg-white dark:bg-blue-950/30 
+                border border-blue-200 dark:border-blue-800 
+                rounded-xl 
+                p-4 
+                shadow-md 
+                hover:shadow-xl 
+                transform 
+                transition-all 
+                duration-300 
+                ease-in-out
+                flex 
+                flex-col 
+                items-center 
+                text-center
+                backdrop-blur-sm
+              `}
             >
-              {/* Horizontal Connecting Line */}
-              <div 
-                className={`absolute h-0.5 bg-gradient-to-r from-blue-400/50 to-blue-600/50 dark:from-blue-600/50 dark:to-blue-800/50 
-                  ${index % 2 === 0 ? 'right-1/2 -mr-0.5 w-[calc(25%+0.5rem)] max-md:hidden' : 'left-1/2 -ml-0.5 w-[calc(25%+0.5rem)] max-md:hidden'}`}
-              >
-                {/* Inner invisible part */}
-                <div className="absolute inset-y-0 left-0 right-[0.5rem] bg-transparent"></div>
+              <div className="mb-2 w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                <span className="text-blue-800 dark:text-blue-200 font-bold text-lg">
+                  {index + 1}
+                </span>
               </div>
-
-              {/* Timeline Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 dark:bg-blue-400 rounded-full z-10 
-                              shadow-md ring-4 ring-blue-100/50 dark:ring-blue-900/50 animate-pulse 
-                              max-md:static max-md:mb-2 max-md:self-center"></div>
               
-              {/* Semester Card */}
-              <motion.div
-                whileHover={{scale:1.05, rotate:1}}
-                whileTap={{scale:0.95}}
-                role="button"
-                tabIndex={0}
-                aria-label={`Semester details for ${semester.semester}`}
-                className={`w-[40%] max-md:w-[90%] border border-blue-200 dark:border-blue-800 rounded-xl 
-                  px-4 md:px-6 py-4 md:py-7 
-                  ${index % 2 === 0 ? 'mr-auto' : 'ml-auto'}
-                  hover:shadow-2xl cursor-pointer 
-                  bg-white dark:bg-blue-950/30 backdrop-blur-sm
-                  hover:bg-blue-50 hover:-translate-y-2 duration-500 
-                  dark:hover:bg-blue-900/50 
-                  focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50
-                  transition-all ease-in-out`}
-              >
-                <h3 className='text-sm md:text-base mb-2 md:mb-4 text-blue-900 dark:text-blue-100 font-bold tracking-wide text-center max-md:text-xs'>{semester.semester}</h3>
-                <div className='flex justify-between space-x-2 md:space-x-0 max-md:flex-col max-md:space-x-0 max-md:space-y-2'>
-                  <div className='bg-blue-50 dark:bg-blue-900/30 p-2 md:p-3 rounded-lg text-center max-md:w-full'>
-                    <p className='text-[10px] md:text-xs text-blue-600 dark:text-blue-300 mb-1'>CGPA</p>
-                    <p className='font-bold text-xs md:text-sm text-blue-800 dark:text-blue-200'>{semester.cgpa}</p>
-                  </div>
-                  <div className='bg-green-50 dark:bg-green-900/30 p-2 md:p-3 rounded-lg text-center max-md:w-full'>
-                    <p className='text-[10px] md:text-xs text-green-600 dark:text-green-300 mb-1'>Courses</p>
-                    <p className='font-bold text-xs md:text-sm text-green-800 dark:text-green-200'>{semester.courses}</p>
-                  </div>
+              <h3 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
+                {semester.semester}
+              </h3>
+              
+              <div className="flex justify-between w-full space-x-2">
+                <div className="flex-1 bg-blue-50 dark:bg-blue-900/30 p-2 rounded-lg">
+                  <p className="text-[10px] text-blue-600 dark:text-blue-300 mb-1">CGPA</p>
+                  <p className="font-bold text-xs text-blue-800 dark:text-blue-200">
+                    {semester.cgpa}
+                  </p>
                 </div>
-              </motion.div>
+                
+                <div className="flex-1 bg-green-50 dark:bg-green-900/30 p-2 rounded-lg">
+                  <p className="text-[10px] text-green-600 dark:text-green-300 mb-1">Courses</p>
+                  <p className="font-bold text-xs text-green-800 dark:text-green-200">
+                    {semester.courses}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

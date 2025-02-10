@@ -54,12 +54,13 @@ const Projects = ({isDarkMode}) => {
             style={{ backgroundImage: `url(${project.bgImage})` }}>
             <div 
             className='absolute bottom-0 left-0 right-0 
-            bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm 
+            bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm 
             w-11/12 rounded-xl mx-auto mb-6 py-4 px-6
             flex items-center justify-between 
             shadow-lg transition-all duration-500 
             transform group-hover:-translate-y-2 
-            dark:text-white'>
+            dark:text-white'
+            >
             <div>
             <h2 className='font-bold text-lg text-gray-800 dark:text-white 
             mb-1 transition-colors group-hover:text-blue-600 
@@ -97,15 +98,17 @@ const Projects = ({isDarkMode}) => {
       initial={{opacity:0}}
       whileInView={{opacity:1}}
       transition={{delay:1.2,duration:0.6}}
-      className='w-max flex items-center justify-center gap-3 
-      text-gray-700 border-[0.5px] border-gray-700 rounded-full py-4 px-12 mx-auto mt-10
-      hover:bg-lightHover duration-500 dark:text-white dark:border-white 
-      dark:hover:bg-darkHover transition group'>
+      className='px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 
+      text-white font-bold rounded-full shadow-lg hover:scale-105 
+      transition-all duration-300 ease-in-out relative
+      mx-auto mt-10 flex items-center justify-center gap-3 group'
+      >
         {showAll ? 'Show Less' : 'Show More'}
         <Image 
-          src={isDarkMode? assets.right_arrow_bold_dark : assets.right_arrow_bold} 
+          src={assets.right_arrow_bold_dark} 
           alt='Right arrow'
-          className='w-5 ml-2 group-hover:translate-x-1 transition duration-300'
+          className='w-5 ml-2 group-hover:translate-x-2 group-hover:scale-110 transition duration-300 
+          filter brightness-0 invert dark:filter-none'
         />
       </motion.button>
     )}

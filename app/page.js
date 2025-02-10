@@ -9,6 +9,8 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Experience from "./components/Experience";
 import Academics from "./components/Academics";
+import Skills from "./components/Skills";
+import ScrollToTop from "./components/ScrollToTop";
 export default function Home() {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -39,12 +41,14 @@ export default function Home() {
     <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
     <Header isDarkMode={isDarkMode}/>
     <About isDarkMode={isDarkMode}/>
+    <Skills isDarkMode={isDarkMode}/>
     <Cp isDarkMode={isDarkMode}/>
     <Projects isDarkMode={isDarkMode}/>
     <Experience isDarkMode={isDarkMode}/>
     <Academics isDarkMode={isDarkMode}/>
     <Contact isDarkMode={isDarkMode}/>
     <Footer isDarkMode={isDarkMode}/>
+    <ScrollToTop isDarkMode={isDarkMode}/>
     </>
   );
 }

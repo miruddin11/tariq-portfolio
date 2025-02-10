@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from "framer-motion"
-import { assets, infoList, toolsData } from '@/assets/assets'
+import { assets, infoList } from '@/assets/assets'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,20 +29,20 @@ const About = ({isDarkMode}) => {
   return (
     <motion.section 
       id='about'
-      className='w-full px-[12%] py-20 scroll-mt-20 bg-lightBg dark:bg-darkBg'
+      className='w-full px-4 sm:px-8 md:px-[12%] py-12 sm:py-16 md:py-20 scroll-mt-20 bg-lightBg dark:bg-darkBg'
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
       <div className='max-w-6xl w-full mx-auto'>
-        <motion.div variants={itemVariants} className='text-center mb-12'>
+        <motion.div variants={itemVariants} className='text-center mb-8 sm:mb-12'>
           <motion.h4 
-            className='text-lg font-Ovo text-gray-600 dark:text-gray-300 tracking-wider uppercase'
+            className='text-base sm:text-lg font-Ovo text-gray-600 dark:text-gray-300 tracking-wider uppercase'
           >
             Introduction
           </motion.h4>
           <motion.h2 
-            className='text-4xl md:text-5xl font-Ovo text-gray-800 dark:text-white mt-2 mb-8'
+            className='text-3xl sm:text-4xl md:text-5xl font-Ovo text-gray-800 dark:text-white mt-2 mb-6 sm:mb-8'
           >
             About Me
           </motion.h2>
@@ -50,91 +50,151 @@ const About = ({isDarkMode}) => {
 
         <motion.div 
           variants={itemVariants}
-          className='flex w-full flex-col lg:flex-row items-center gap-12 lg:gap-20'
+          className='grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center justify-center lg:pl-8 xl:pl-12'
         >
           {/* Profile Image */}
           <motion.div 
-            className='w-64 sm:w-80 rounded-3xl overflow-hidden'
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.5 }}
+            className='flex justify-center items-center w-full'
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              duration: 0.6,
+              type: "spring",
+              stiffness: 100 
+            }}
           >
-            <Image 
-              src={assets.user_image} 
-              alt='Profile' 
-              className='w-full rounded-3xl'
-            />
+            <div className='w-40 sm:w-56 md:w-72 lg:w-80 rounded-2xl overflow-hidden 
+            shadow-xl border-2 border-white/80 dark:border-gray-800/80
+            transform transition-all duration-500 
+            hover:scale-105 hover:shadow-2xl'>
+              <Image 
+                src={assets.user_image} 
+                alt='Tariq Uddin - Full Stack Developer' 
+                className='w-full h-full object-cover rounded-2xl
+                transition-all duration-500 ease-in-out'
+                priority
+                width={320}
+                height={320}
+              />
+            </div>
           </motion.div>
 
           {/* About Content */}
-          <motion.div className='flex-1'>
+          <motion.div 
+            className='flex flex-col justify-center space-y-6 sm:space-y-8 w-full'
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ 
+              duration: 0.6,
+              type: "spring",
+              stiffness: 100 
+            }}
+          >
             <motion.p 
               variants={itemVariants}
-              className='mb-10 max-w-2xl font-Ovo text-gray-700 dark:text-gray-300'
+              className='text-sm sm:text-base md:text-lg font-Ovo text-gray-700 dark:text-gray-300 
+              leading-relaxed tracking-wide text-center lg:text-left
+              bg-gradient-to-r from-blue-600 to-purple-600 
+              bg-clip-text text-transparent'
             >
-              Code is my canvas, and technology is my paintbrush. As a Full Stack Developer, 
-              I craft digital experiences that breathe life into ideas, transforming complex 
-              concepts into intuitive, high-performance web applications. Specializing in 
-              React, Next.js, and Node.js, I don't just write code—I engineer solutions that 
-              push the boundaries of what's possible, one line at a time.
+              A passionate Full Stack Developer transforming complex ideas into elegant digital solutions. 
+              Specializing in React, Next.js, and Node.js, I craft immersive web experiences that solve 
+              problems and tell compelling stories through code.
             </motion.p>
 
-            {/* Key Info Grid */}
+            {/* Personal Details */}
             <motion.div 
               variants={itemVariants}
-              className='grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl'
+              className='w-full max-w-2xl mx-auto lg:mx-0 bg-gradient-to-br from-purple-50 to-blue-100 
+              dark:from-purple-900/30 dark:to-blue-900/30 
+              p-4 sm:p-6 rounded-2xl border border-purple-200/50 
+              dark:border-blue-800/30 
+              shadow-xl dark:shadow-2xl 
+              transform transition-all duration-500 
+              hover:scale-[1.02] hover:shadow-2xl 
+              lg:mt-0 mt-6'
             >
-              {infoList.map(({icon, iconDark, title, description}, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{scale:1.05}}
-                  className='border-[0.5px] border-gray-400 rounded-xl p-6 
-                  cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500
-                  hover:shadow-black dark:border-white dark:hover:shadow-white 
-                  dark:hover:bg-darkHover/50'
+              {[
+                { 
+                  label: 'University', 
+                  value: 'Odisha University of Technology and Research, Bhubaneswar',
+                  icon: (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 text-purple-600 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  )
+                },
+                { 
+                  label: 'Branch', 
+                  value: 'Computer Science and Engineering',
+                  icon: (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  )
+                },
+                { 
+                  label: 'Current Year', 
+                  value: '4th Year (Batch 2021-25)',
+                  icon: (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 text-green-600 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  )
+                },
+                { 
+                  label: 'Location', 
+                  value: 'Bhubaneswar, Odisha, India',
+                  icon: (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 text-red-600 dark:text-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  )
+                },
+                { 
+                  label: 'Email', 
+                  value: 'mirtariquddin666@gmail.com',
+                  icon: (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 text-indigo-600 dark:text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )
+                }
+              ].map(({label, value, icon}, index) => (
+                <motion.div 
+                  key={label}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ 
+                    delay: index * 0.2, 
+                    type: "spring", 
+                    stiffness: 100 
+                  }}
+                  className='flex items-center space-x-2 sm:space-x-4 p-2 sm:p-3 
+                  bg-white/60 dark:bg-black/30 
+                  rounded-xl 
+                  shadow-md 
+                  hover:bg-gradient-to-r 
+                  hover:from-purple-100 hover:to-blue-100
+                  dark:hover:from-purple-900/50 dark:hover:to-blue-900/50
+                  transition-all duration-500 
+                  group'
                 >
-                  <Image 
-                    src={isDarkMode ? iconDark : icon} 
-                    alt={title} 
-                    className='w-7 mt-3'
-                  />
-                  <h3 className='my-4 font-semibold text-gray-700 dark:text-white'>
-                    {title}
-                  </h3>
-                  <p className='text-gray-600 text-sm dark:text-white/80'>
-                    {description}
-                  </p>
+                  <div className='p-1.5 sm:p-2 bg-gray-100 dark:bg-gray-800 rounded-full'>
+                    {icon}
+                  </div>
+                  <div>
+                    <span className='block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider'>
+                      {label}
+                    </span>
+                    <p className='text-xs sm:text-sm text-gray-800 dark:text-white font-semibold group-hover:text-purple-700 dark:group-hover:text-blue-300 transition-colors'>
+                      {value}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
-            </motion.div>
-
-            {/* Tools Section */}
-            <motion.div variants={itemVariants}>
-              <h4 className='my-6 text-gray-700 font-Ovo dark:text-white/80'>
-                Tools I Use
-              </h4>
-              <motion.div 
-                className='grid grid-cols-4 sm:grid-cols-7 gap-3 sm:gap-5'
-                variants={containerVariants}
-              >
-                {toolsData.map((tool, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{scale:1.1}}
-                    className='flex items-center justify-center w-full aspect-square 
-                    border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer 
-                    hover:-translate-y-1 duration-500 
-                    hover:shadow-lg hover:border-opacity-0
-                    hover:bg-lightHover dark:hover:bg-darkHover
-                    dark:hover:shadow-white'
-                  >
-                    <Image 
-                      src={tool} 
-                      alt='Tool' 
-                      className='w-5 sm:w-7'
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>

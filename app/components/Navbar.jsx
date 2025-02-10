@@ -23,12 +23,13 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
 
     const mobileMenuItems = [
         { label: 'Home', href: '#top' },
-        { label: 'About Me', href: '#about' },
+        { label: 'About', href: '#about' },
+        {label:  'Skills', href: '#skills'},
         { label: 'Coding', href: '#cp' },
         { label: 'Projects', href: '#projects' },
         { label: 'Experience', href: '#experience' },
-        { label: 'Academics', href: '#academics' },
-        { label: 'Contact Me', href: '#contact' }
+        { label: 'Education', href: '#academics' },
+        { label: 'Contact', href: '#contact' },
     ];
 
     return (
