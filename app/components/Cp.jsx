@@ -27,7 +27,7 @@ const ProfileCard = ({ icon, title, link, index }) => {
         transition-opacity duration-500 
         blur-md group-hover:blur-lg"></div>
       
-      <div className="relative p-8 bg-white dark:bg-gray-900 
+      <div className="relative p-4 sm:p-6 bg-white dark:bg-gray-900 
         rounded-3xl border border-gray-200 dark:border-gray-800
         shadow-lg 
         transform transition-all duration-500
@@ -35,7 +35,7 @@ const ProfileCard = ({ icon, title, link, index }) => {
         flex flex-col items-center justify-between"
       >
         {/* Icon Section */}
-        <div className="mb-6 w-full flex justify-center relative">
+        <div className="mb-4 w-full flex justify-center relative">
           <motion.div
             whileHover={{ 
               rotate: 360, 
@@ -46,7 +46,7 @@ const ProfileCard = ({ icon, title, link, index }) => {
                 damping: 10 
               }
             }}
-            className="w-28 h-28 
+            className="w-20 h-20 sm:w-28 sm:h-28 
             bg-gradient-to-br from-blue-100 to-purple-100
             dark:from-blue-900/30 dark:to-purple-900/30
             rounded-full shadow-lg flex items-center justify-center 
@@ -55,22 +55,22 @@ const ProfileCard = ({ icon, title, link, index }) => {
             <Image 
               src={icon} 
               alt={title} 
-              width={64} 
-              height={64} 
-              className="w-16 h-16 object-contain"
+              width={48} 
+              height={48} 
+              className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
             />
           </motion.div>
           
           {/* Decorative Accent */}
           <div className="absolute top-0 right-0 
-            w-6 h-6 bg-blue-500 rounded-full 
+            w-4 h-4 sm:w-6 sm:h-6 bg-blue-500 rounded-full 
             opacity-0 group-hover:opacity-100 
             transition-opacity duration-500"></div>
         </div>
 
         {/* Content Section */}
-        <div className="text-center mb-6 w-full">
-          <h3 className="text-2xl font-bold 
+        <div className="text-center mb-4 w-full">
+          <h3 className="text-xl sm:text-2xl font-bold 
             text-gray-800 dark:text-white 
             group-hover:text-blue-600 dark:group-hover:text-blue-300 
             transition-colors duration-300">
@@ -87,9 +87,9 @@ const ProfileCard = ({ icon, title, link, index }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="relative overflow-hidden 
-            px-4 py-2 rounded-full 
+            px-3 py-1.5 sm:px-4 sm:py-2 rounded-full 
             bg-gradient-to-r from-blue-500 to-purple-500 
-            text-white font-semibold text-sm
+            text-white font-semibold text-xs sm:text-sm
             shadow-md hover:shadow-xl
             transition-all duration-300 
             flex items-center justify-center
@@ -99,9 +99,9 @@ const ProfileCard = ({ icon, title, link, index }) => {
             <Image 
               src={assets.right_arrow} 
               alt="" 
-              width={20}
-              height={20}
-              className="w-4 h-4 ml-1 
+              width={16}
+              height={16}
+              className="w-3 h-3 sm:w-4 sm:h-4 ml-1 
               filter brightness-0 invert
               transform group-hover:translate-x-1 
               transition-transform duration-300"
@@ -163,7 +163,7 @@ const Cp = ({ isDarkMode }) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        className="grid grid-cols-1 md:grid-cols-4 gap-8 my-10"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 my-10"
       >
         {serviceData.map((profile, index) => (
           <ProfileCard 

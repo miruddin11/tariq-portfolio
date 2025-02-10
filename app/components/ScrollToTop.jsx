@@ -32,26 +32,23 @@ const ScrollToTop = ({ isDarkMode }) => {
       {isVisible && (
         <div 
           onClick={scrollToTop} 
+          className='fixed right-4 sm:right-6 md:right-8 
+                     bottom-4 sm:bottom-6 md:bottom-8 
+                     bg-blue-500 dark:bg-gray-700 
+                     text-white 
+                     rounded-full 
+                     cursor-pointer 
+                     shadow-md 
+                     z-50 
+                     flex items-center justify-center
+                     w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14'
           style={{
-            position: 'fixed',
-            right: '20px',
-            bottom: '20px',
-            backgroundColor: isDarkMode ? '#4a4a4a' : '#007bff',
-            color: 'white',
-            borderRadius: '50%',
-            width: '50px',
-            height: '50px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            cursor: 'pointer',
-            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
-            zIndex: 1000,
-            transition: 'background-color 0.3s ease'
+            transition: 'background-color 0.3s ease, transform 0.2s ease',
+            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)'
           }}
           aria-label="Scroll to top"
         >
-          <FaArrowUp size={24} />
+          <FaArrowUp className='w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6' />
         </div>
       )}
     </>

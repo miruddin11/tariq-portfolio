@@ -238,7 +238,7 @@ const Header = () => {
             damping: 20,
             duration: 1
           }}
-          className='mb-4'
+          className='mb-4 sm:mb-6 md:mb-8'
         >
           <Image 
             src={assets.profile_img} 
@@ -246,7 +246,8 @@ const Header = () => {
             width={150} 
             height={150}
             className='rounded-full border-4 border-white 
-            shadow-2xl hover:scale-105 transition-transform duration-300'
+            shadow-2xl hover:scale-105 transition-transform duration-300
+            w-24 h-24 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-[150px] lg:h-[150px]'
           />
         </motion.div>
 
@@ -298,19 +299,20 @@ const Header = () => {
         <div className='flex space-x-4 mt-8'>
           <button 
             onClick={handleContactClick}
-            className='px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 
+            className='px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 
             text-white font-bold rounded-full shadow-lg hover:scale-105 
-            transition-all duration-300 ease-in-out relative'
+            transition-all duration-300 ease-in-out relative
+            text-sm sm:text-base'
           >
             Contact Me
           </button>
           <button 
             onClick={handleResumeDownload}
-            className='px-4 py-2 text-sm bg-gradient-to-r from-purple-600 to-blue-600 
+            className='px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gradient-to-r from-purple-600 to-blue-600 
             text-white font-bold rounded-full shadow-md hover:scale-105 
             transition-all duration-300 ease-in-out flex items-center space-x-2 relative'
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
             <span>Download Resume</span>
