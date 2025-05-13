@@ -117,7 +117,7 @@ const Academics = ({isDarkMode}) => {
               <div className="flex justify-between w-full space-x-2 mb-2">
                 <div className="flex-1 bg-white dark:bg-gray-800/50 p-2 rounded-lg shadow-sm">
                   <p className="text-[10px] uppercase tracking-wider text-blue-600 dark:text-blue-300 mb-1">
-                    CGPA
+                    SGPA
                   </p>
                   <p className="font-bold text-base text-gray-700 dark:text-gray-300">
                     {semester.cgpa}
