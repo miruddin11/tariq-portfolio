@@ -150,8 +150,8 @@ const Academics = ({isDarkMode}) => {
             Cumulative Grade Point Average
           </p>
           <p className="text-3xl md:text-4xl font-bold text-gray-700 dark:text-gray-300">
-            9.64 
-            <span className="text-sm ml-1 text-gray-600 dark:text-gray-400">(91.4%)</span>
+            9.63 
+            <span className="text-sm ml-1 text-gray-600 dark:text-gray-400">(91.3%)</span>
           </p>
         </div>
       </motion.div>

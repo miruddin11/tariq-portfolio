@@ -29,7 +29,6 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
         { label: 'Projects', href: '#projects' },
         { label: 'Experience', href: '#experience' },
         { label: 'Education', href: '#academics' },
-        { label: 'Contact', href: '#contact' },
     ];
 
     return (
@@ -37,15 +36,23 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
             <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden'>
                 <Image src={assets.header_bg_color} alt="" className='w-full'/>
             </div>
-            <nav className={`w-full fixed top-0 left-0 px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:shadow-white/20 " : ""}`}>
-                <a href="#top">
+            <nav className={`w-full fixed top-0 left-0 px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-300 ${
+                isScroll 
+                    ? "bg-white/50 dark:bg-gray-900/50 backdrop-blur-md shadow-md dark:shadow-gray-800/20" 
+                    : "bg-transparent"
+            }`}>
+                <a href="#top" className="hover:opacity-90 transition-opacity">
                     <Image 
                         src={isDarkMode ? assets.logo_dark : assets.logo} 
-                        className='w-28 cursor-pointer mr-14' 
+                        className='w-28 cursor-pointer mr-14 transition-transform hover:scale-105' 
                         alt="Logo"
                     />
                 </a>
-                <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"}`}>
+                <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-8 py-2.5 transition-all duration-300 ${
+                    isScroll 
+                        ? "bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-sm" 
+                        : "bg-white/90 dark:bg-gray-800/90 shadow-sm"
+                }`}>
                     {mobileMenuItems.map((item, index) => (
                         <li key={index}>
                             <a 
@@ -62,22 +69,34 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
                     ))}
                 </ul>
                 <div className='flex items-center gap-4'>
-                    <button onClick={()=>setIsDarkMode(prev=>!prev)}>
+                    <button 
+                        onClick={() => setIsDarkMode(prev => !prev)}
+                        className='p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200'
+                        aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                    >
                         <Image 
                             src={isDarkMode ? assets.sun_icon : assets.moon_icon} 
-                            alt='Theme Toggle' 
-                            className='w-6 transition-transform duration-500 hover:rotate-180'
+                            alt='' 
+                            width={24}
+                            height={24}
+                            className='w-6 h-6 transition-transform duration-300 hover:rotate-180'
                         />
                     </button>
                     <a 
                         href="#contact" 
-                        className='hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50'
+                        className='hidden lg:flex items-center gap-2 px-7 py-2 border border-gray-400 rounded-full font-Ovo
+                        text-base
+                        dark:border-gray-500
+                        hover:bg-gray-100 dark:hover:bg-gray-800
+                        transition-colors duration-200'
                     >
-                        Contact 
+                        Contact
                         <Image 
                             src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon} 
-                            alt="Arrow" 
-                            className='w-3'
+                            alt="" 
+                            width={12}
+                            height={12}
+                            className='w-3 h-3'
                         />
                     </a>
                     <button 
@@ -99,7 +118,7 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
             {/* Full-screen Mobile Menu Overlay */}
             {isMobileMenuOpen && (
                 <div 
-                    className='fixed inset-0 z-[100] bg-white dark:bg-black bg-opacity-95 dark:bg-opacity-95 flex flex-col items-center justify-center 
+                    className='fixed inset-0 z-[100] bg-white/20 dark:bg-black/20 backdrop-blur-md flex flex-col items-center justify-center 
                     transition-all duration-300 ease-in-out transform 
                     animate-fade-in-down'
                     role="dialog" 
@@ -140,6 +159,24 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
                                 </a>
                             </li>
                         ))}
+                        <li className='w-full text-center'>
+                            <a 
+                                href="#contact" 
+                                className='text-xl font-Ovo 
+                                text-gray-700 dark:text-gray-200 
+                                hover:text-rose-500 dark:hover:text-rose-300 
+                                focus:text-rose-600 dark:focus:text-rose-200
+                                active:scale-95 
+                                transition-all duration-200 
+                                px-4 py-2 block 
+                                rounded-xl 
+                                hover:bg-gray-100 dark:hover:bg-gray-800'
+                                onClick={toggleMobileMenu}
+                                role="menuitem"
+                            >
+                                Contact
+                            </a>
+                        </li>
                     </ul>
                 </div>
             )}

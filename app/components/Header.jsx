@@ -274,7 +274,7 @@ const Header = () => {
           font-Ovo font-bold text-gray-800 dark:text-gray-300
           mb-6'
         >
-          Aspiring Software Developer based in India
+          Software Developer based in India
         </motion.h1>
 
         <motion.p 
