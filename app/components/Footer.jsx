@@ -97,7 +97,10 @@ const Footer = ({ isDarkMode }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="flex items-center transition-all duration-300 ease-in-out group-hover:w-52 group-hover:px-4 w-auto px-0 rounded-2xl"
+                  className={`
+                    flex items-center transition-all duration-300 ease-in-out rounded-2xl
+                    md:group-hover:w-52 md:group-hover:px-4 md:w-auto md:px-0
+                  `}
                 >
                   {/* Icon Circle */}
                   <div
@@ -116,8 +119,8 @@ const Footer = ({ isDarkMode }) => {
                     />
                   </div>
 
-                  {/* Text (only visible on hover) */}
-                  <div className="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* Text (hidden on mobile, visible with hover on desktop) */}
+                  <div className="hidden md:block ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="font-semibold text-sm">{name}</p>
                     <p className="text-xs opacity-80">{username}</p>
                   </div>
@@ -126,7 +129,7 @@ const Footer = ({ isDarkMode }) => {
             ))}
           </div>
 
-          {/* Bottom Bar - Sleeker */}
+          {/* Bottom Bar */}
           <div
             className={`flex flex-col items-center pt-4 border-t ${
               isDarkMode ? "border-white/10" : "border-gray-200"
