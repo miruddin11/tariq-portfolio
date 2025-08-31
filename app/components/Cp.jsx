@@ -3,7 +3,7 @@ import { serviceData, assets } from '@/assets/assets';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-const ProfileCard = ({ icon, title, link, index }) => {
+const ProfileCard = ({ icon, title, description, link, index }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -27,12 +27,12 @@ const ProfileCard = ({ icon, title, link, index }) => {
         transition-opacity duration-500 
         blur-md group-hover:blur-lg"></div>
       
-      <div className="relative p-4 sm:p-6 bg-white dark:bg-gray-900 
+      <div className="relative p-5 sm:p-6 bg-white dark:bg-gray-900 
         rounded-3xl border border-gray-200 dark:border-gray-800
         shadow-lg 
         transform transition-all duration-500
         group-hover:scale-[1.02] group-hover:shadow-2xl
-        flex flex-col items-center justify-between"
+        flex flex-col items-center justify-between h-full min-h-[320px]"
       >
         {/* Icon Section */}
         <div className="mb-4 w-full flex justify-center relative">
@@ -69,17 +69,20 @@ const ProfileCard = ({ icon, title, link, index }) => {
         </div>
 
         {/* Content Section */}
-        <div className="text-center mb-4 w-full">
-          <h3 className="text-xl sm:text-2xl font-bold 
+        <div className="text-center mb-4 w-full flex-grow px-2">
+          <h3 className="text-lg sm:text-xl font-bold 
             text-gray-800 dark:text-white 
             group-hover:text-blue-600 dark:group-hover:text-blue-300 
-            transition-colors duration-300">
+            transition-colors duration-300 mb-2">
             {title}
           </h3>
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+            {description}
+          </p>
         </div>
 
         {/* Action Section */}
-        <div className="w-full flex justify-center mt-auto">
+        <div className="w-full flex justify-center mt-3">
           <motion.a 
             href={link}
             target="_blank"
@@ -87,23 +90,21 @@ const ProfileCard = ({ icon, title, link, index }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="relative overflow-hidden 
-            px-3 py-1.5 sm:px-4 sm:py-2 rounded-full 
+            w-10 h-10 rounded-full
             bg-gradient-to-r from-blue-500 to-purple-500 
-            text-white font-semibold text-xs sm:text-sm
             shadow-md hover:shadow-xl
             transition-all duration-300 
             flex items-center justify-center
             group"
+            aria-label={`Open ${title} profile`}
           >
-            <span className="relative z-10">View Profile</span>
             <Image 
               src={assets.right_arrow} 
               alt="" 
-              width={16}
-              height={16}
-              className="w-3 h-3 sm:w-4 sm:h-4 ml-1 
+              width={20}
+              height={20}
+              className="w-5 h-5
               filter brightness-0 invert
-              transform group-hover:translate-x-1 
               transition-transform duration-300"
             />
             
@@ -128,48 +129,39 @@ const Cp = ({ isDarkMode }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       id="cp"
-      className="w-full px-[12%] py-10 scroll-mt-20"
+      className="w-full px-[8%] py-8 scroll-mt-20"
     >
-      <motion.h4
-        initial={{ y: -20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="text-center mb-2 text-lg font-Ovo text-gray-600 dark:text-gray-400"
-      >
-        About Competitive Programming
-      </motion.h4>
       <motion.h2
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="text-center text-5xl font-Ovo text-gray-800 dark:text-white"
+        transition={{ delay: 0.3, duration: 0.5 }}
+        className="text-center text-4xl font-Ovo text-gray-800 dark:text-white mb-4"
       >
-        My Profiles
+        My Coding Profiles
       </motion.h2>
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.5 }}
-        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo 
+        transition={{ delay: 0.5, duration: 0.5 }}
+        className="text-center max-w-2xl mx-auto mb-8 font-Ovo 
         text-gray-600 dark:text-gray-300"
       >
-        I have been doing competitive programming for the past 3 years. I have participated in various contests and
-        have been able to achieve good ranks in them. Here are some of my profiles where you can see my ratings and
-        rankings.
+        What I love to do.
       </motion.p>
 
       {/* Competitive Programming Profiles */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 my-10"
+        transition={{ delay: 0.7, duration: 0.6 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 my-6 max-w-[2000px] mx-auto px-4"
       >
         {serviceData.map((profile, index) => (
           <ProfileCard 
             key={index} 
             icon={profile.icon} 
-            title={profile.title} 
+            title={profile.title}
+            description={profile.description}
             link={profile.link} 
             index={index} 
           />

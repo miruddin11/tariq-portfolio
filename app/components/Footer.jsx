@@ -1,210 +1,160 @@
-import React from 'react'
-import Image from 'next/image';
-import Link from 'next/link';
-import { assets } from '@/assets/assets';
-import { 
-  FaGithub, 
-  FaLinkedin, 
-  FaTwitter, 
-  FaEnvelope,
-  FaCode,
-  FaHeart,
-  FaReact,
-  FaPython,
-  FaNodeJs,
-  FaDocker,
-  FaDatabase,
-  FaRocket
-} from 'react-icons/fa';
-import { 
-  SiNextdotjs, 
-  SiTailwindcss, 
-  SiJavascript, 
-  SiTypescript,
-  SiMongodb,
-  SiGooglecloud
-} from 'react-icons/si';
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { assets } from "@/assets/assets";
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaTimes } from "react-icons/fa";
 
 const SOCIAL_LINKS = [
-  { 
-    icon: FaGithub, 
-    url: "https://github.com/miruddin11", 
+  {
+    icon: FaGithub,
+    url: "https://github.com/miruddin11",
     name: "GitHub",
-    ariaLabel: "Visit my GitHub profile" 
+    username: "@miruddin11",
+    color: "#000000",
   },
-  { 
-    icon: FaLinkedin, 
-    url: "https://linkedin.com/in/mir-tariquddin", 
+  {
+    icon: FaLinkedin,
+    url: "https://linkedin.com/in/mir-tariquddin",
     name: "LinkedIn",
-    ariaLabel: "Connect with me on LinkedIn" 
+    username: "@mir-tariquddin",
+    color: "#0A66C2",
   },
-  { 
-    icon: FaTwitter, 
-    url: "https://twitter.com/mir_tariquddin", 
+  {
+    icon: FaTwitter,
+    url: "https://twitter.com/mir_tariquddin",
     name: "Twitter",
-    ariaLabel: "Follow me on Twitter" 
-  }
+    username: "@mir_tariquddin",
+    color: "#1DA1F2",
+  },
+  {
+    icon: FaInstagram,
+    url: "https://instagram.com/mir_tariquddin",
+    name: "Instagram",
+    username: "@mir_tariquddin",
+    color: "#E1306C",
+  },
 ];
 
-const TECH_ICONS = [
-  { 
-    icon: FaReact, 
-    name: "React", 
-    color: "#61DAFB",
-    hoverColor: "#00D8FF"
-  },
-  { 
-    icon: SiNextdotjs, 
-    name: "Next.js", 
-    color: "currentColor",
-    hoverColor: "#FFFFFF"
-  },
-  { 
-    icon: SiTailwindcss, 
-    name: "Tailwind CSS", 
-    color: "#06B6D4",
-    hoverColor: "#38BDF8"
-  },
-  { 
-    icon: FaPython, 
-    name: "Python", 
-    color: "#3776AB",
-    hoverColor: "#FFD43B"
-  },
-  { 
-    icon: FaNodeJs, 
-    name: "Node.js", 
-    color: "#339933",
-    hoverColor: "#6CC24A"
-  },
-  { 
-    icon: SiMongodb, 
-    name: "MongoDB", 
-    color: "#47A248",
-    hoverColor: "#4DB33D"
-  },
-  { 
-    icon: FaDocker, 
-    name: "Docker", 
-    color: "#2496ED",
-    hoverColor: "#0DB7ED"
-  },
-  { 
-    icon: SiGooglecloud, 
-    name: "Google Cloud", 
-    color: "#4285F4",
-    hoverColor: "#34A853"
-  }
-];
-
-const Footer = ({isDarkMode}) => {
-  const currentYear = new Date().getFullYear();
+const SocialMediaModal = ({ isOpen, onClose, socialLinks }) => {
+  if (!isOpen) return null;
 
   return (
-    <footer 
-      className={`
-        w-full py-12 transition-colors duration-300
-        ${isDarkMode 
-          ? 'bg-gradient-to-br from-darkBg to-black text-white/90' 
-          : 'bg-gradient-to-br from-lightBg to-blue-50 text-gray-800'}
-      `}
-    >
-      <div className='container mx-auto px-4 max-w-6xl'>
-        <div className='grid md:grid-cols-2 gap-8 items-center'>
-          {/* Logo and Contact Section */}
-          <div className='text-center md:text-left'>
-            <Image 
-              src={isDarkMode ? assets.logo_dark : assets.logo} 
-              alt='Mir Tariquddin Logo' 
-              width={150}
-              height={50}
-              className='mx-auto md:mx-0 mb-4 hover:scale-105 transition-transform duration-300'
-            />
-            <div className='flex items-center justify-center md:justify-start gap-3 text-base'>
-              <FaEnvelope className={`w-5 h-5 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`} />
-              <a 
-                href="mailto:mirtariquddin666@gmail.com" 
-                className='hover:text-blue-500 transition-colors duration-300 dark:text-white/80'
-                aria-label="Send me an email"
-              >
-                mirtariquddin666@gmail.com
-              </a>
-            </div>
-          </div>
+    <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <button
+        onClick={onClose}
+        className="absolute top-6 right-6 text-white/70 hover:text-white text-2xl"
+        aria-label="Close"
+      >
+        <FaTimes />
+      </button>
 
-          {/* Social and Copyright Section */}
-          <div className='text-center md:text-right'>
-            <div className='flex items-center justify-center md:justify-end gap-6 mb-4'>
-              {SOCIAL_LINKS.map(({icon: Icon, url, name, ariaLabel}) => (
-                <Link 
-                  key={name} 
-                  href={url} 
-                  target='_blank' 
-                  rel='noopener noreferrer'
-                  aria-label={ariaLabel}
-                  className='
-                    group relative overflow-hidden rounded-full p-2
-                    transition-all duration-300 ease-in-out
-                    hover:bg-blue-50/20 hover:scale-110
-                  '
-                >
-                  <Icon 
-                    className={`
-                      w-6 h-6 transition-colors duration-300
-                      ${isDarkMode 
-                        ? 'text-white/70 group-hover:text-white' 
-                        : 'text-gray-600 group-hover:text-blue-600'}
-                    `} 
-                  />
-                </Link>
-              ))}
-            </div>
-            
-            <p 
-              className={`
-                text-sm opacity-70 flex items-center justify-center md:justify-end gap-2
-                ${isDarkMode ? 'text-white/60' : 'text-gray-600'}
-              `}
+      <div className="w-full max-w-4xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {socialLinks.map(({ icon: Icon, url, name, username, color }) => (
+            <a
+              key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg bg-white/10 border border-white/10"
             >
-              {currentYear} Mir Tariquddin 
-              <FaCode className="inline mx-1" />
-              with 
-              <FaHeart className="inline text-red-500 mx-1" />
-              All rights reserved
-            </p>
-
-            {/* Tech Stack Icons */}
-            <div className='flex flex-wrap justify-center md:justify-end gap-3 mt-6'>
-              {TECH_ICONS.map(({icon: Icon, name, color, hoverColor}) => (
-                <div 
-                  key={name}
-                  className='
-                    group relative tooltip
-                    transition-all duration-300 ease-in-out
-                  '
-                  title={name}
-                >
-                  <Icon 
-                    className={`
-                      w-5 h-5 transition-all duration-300
-                      ${isDarkMode 
-                        ? 'text-white/60 group-hover:text-white' 
-                        : 'text-gray-500 group-hover:text-gray-800'}
-                    `}
-                    style={{
-                      color: isDarkMode ? 'inherit' : color,
-                      transform: 'scale(1)',
-                      transition: 'transform 0.3s, color 0.3s'
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0"
+                style={{ backgroundColor: `${color}1A` }}
+              >
+                <Icon className="w-8 h-8" style={{ color }} />
+              </div>
+              <div className="overflow-hidden">
+                <h3 className="text-xl font-semibold text-white">{name}</h3>
+                <p className="text-white/60 truncate">{username}</p>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
-    </footer>
-  )
-}
+    </div>
+  );
+};
 
-export default Footer
+const Footer = ({ isDarkMode }) => {
+  const currentYear = new Date().getFullYear();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <>
+      <footer
+        className={`w-full py-6 ${
+          isDarkMode ? "bg-darkBg text-white" : "bg-lightBg text-gray-800"
+        }`}
+      >
+        <div className="container mx-auto px-4 max-w-6xl">
+          {/* Social Media Icons */}
+          <div className="flex justify-center items-center gap-3 mb-6">
+            {SOCIAL_LINKS.map(({ icon: Icon, url, name, color, username }) => (
+              <div key={name} className="group">
+                <Link
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="flex items-center transition-all duration-300 ease-in-out group-hover:w-52 group-hover:px-4 w-auto px-0 rounded-2xl"
+                >
+                  {/* Icon Circle */}
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center shadow-sm transition-colors duration-300"
+                    style={{
+                      backgroundColor:
+                        isDarkMode && name === "GitHub" ? "#ffffff" : "#ffffff",
+                    }}
+                  >
+                    <Icon
+                      className="w-6 h-6"
+                      style={{
+                        color:
+                          isDarkMode && name === "GitHub" ? "#000000" : color,
+                      }}
+                    />
+                  </div>
+
+                  {/* Text (only visible on hover) */}
+                  <div className="ml-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="font-semibold text-sm">{name}</p>
+                    <p className="text-xs opacity-80">{username}</p>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Bar - Sleeker */}
+          <div
+            className={`flex flex-col items-center pt-4 border-t ${
+              isDarkMode ? "border-white/10" : "border-gray-200"
+            }`}
+          >
+            <Image
+              src={isDarkMode ? assets.logo_dark : assets.logo}
+              alt="Mir Tariquddin Logo"
+              width={140}
+              height={50}
+              className="hover:scale-105 transition-transform duration-300 cursor-pointer mb-2"
+              onClick={() => setIsModalOpen(true)}
+            />
+            <p className="text-sm opacity-70">
+              © {currentYear} Mir Tariquddin. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Social Media Modal */}
+      <SocialMediaModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        socialLinks={SOCIAL_LINKS}
+      />
+    </>
+  );
+};
+
+export default Footer;

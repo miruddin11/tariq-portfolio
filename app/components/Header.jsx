@@ -32,24 +32,18 @@ const Header = () => {
     }
   };
 
-  const handleResumeDownload = () => {
-    const resumeUrl = 'https://drive.google.com/uc?export=download&id=1hutn-aYFbA9GSzzYGaCC3borZx74RKHh';
-    const link = document.createElement('a');
-    link.href = resumeUrl;
-    link.setAttribute('download', 'Mir_Tariquddin_Resume.pdf');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    console.log('Resume download initiated');
+  const handleHireMe = () => {
+    window.location.href = 'mailto:mirtariquddin666@gmail.com';
   };
 
   useEffect(() => {
     if (typedElementRef.current) {
       const options = {
         strings: [
-          "Full-Stack Developer", 
+          "Developer", 
           "Competitive Programmer", 
-          "Algorithm Enthusiast"
+          "Learner",
+          "Contributor",
         ],
         typeSpeed: 100,  
         backSpeed: 50,   
@@ -296,26 +290,17 @@ const Header = () => {
           ></span>
         </motion.p>
 
-        <div className='flex space-x-4 mt-8'>
+        <div className='flex justify-center mt-8'>
           <button 
-            onClick={handleContactClick}
-            className='px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 
+            onClick={handleHireMe}
+            className='px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-blue-600 to-purple-600 
             text-white font-bold rounded-full shadow-lg hover:scale-105 
-            transition-all duration-300 ease-in-out relative
-            text-sm sm:text-base'
-          >
-            Contact Me
-          </button>
-          <button 
-            onClick={handleResumeDownload}
-            className='px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gradient-to-r from-purple-600 to-blue-600 
-            text-white font-bold rounded-full shadow-md hover:scale-105 
             transition-all duration-300 ease-in-out flex items-center space-x-2 relative'
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <span>Download Resume</span>
+            <span>Hire Me</span>
           </button>
         </div>
       </div>

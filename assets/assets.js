@@ -40,6 +40,7 @@ import node from './node.png';
 import postgre from './postgre.png';
 import vite from './vite.png';
 import codechef from './codechef.png';
+import github_icon from './github_icon.png';
 
 
 export const assets = {
@@ -84,7 +85,8 @@ export const assets = {
     node,
     postgre,
     vite,
-    codechef
+    codechef,
+    github_icon,
 };
 
 export const workData = [
@@ -139,11 +141,38 @@ export const workData = [
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'LeetCode', description: 'LeetCode (Knight, Rating: 2081): Global ranks: 350/26,000 and 843/30,000.', link: 'https://leetcode.com/u/mirtariq/' },
-    { icon: assets.mobile_icon, title: 'GeeksforGeeks', description: 'GeeksforGeeks (Level 4, Rating: 1931 ,Campus Rank: 6): Global rank: 64 , 85/4,000.', link: 'https://www.geeksforgeeks.org/user/mirtariq/' },
-    { icon: assets.codechef, title: 'Codechef', description: 'CodeChef (5-Star, Rating: 2000): Global ranks: 8, 12, 35/35,000. Ranked 2,300/4.5M users.', link: 'https://www.codechef.com/users/infinity_11' },
-    { icon: assets.graphics_icon, title: 'Codeforces', description: 'Codeforces (Specialist, Rating: 1455): Global rank: 114/40,000 in Round 928 (Div 4).', link: 'https://codeforces.com/profile/Nirmali18' },
+    { 
+        icon: assets.web_icon, 
+        title: 'LeetCode', 
+        description: 'Questions Solved: 1100+ | Guardian (Max Rating: 2160)', 
+        link: 'https://leetcode.com/u/mirtariq/' 
+    },
+    { 
+        icon: assets.mobile_icon, 
+        title: 'GeeksforGeeks', 
+        description: 'Questions Solved: 750+ | Global Rank (Max Rating: 1931)', 
+        link: 'https://www.geeksforgeeks.org/user/mirtariq/' 
+    },
+    { 
+        icon: assets.codechef, 
+        title: 'CodeChef', 
+        description: '5 Star | Max Rating: 2000', 
+        link: 'https://www.codechef.com/users/infinity_11' 
+    },
+    { 
+        icon: assets.graphics_icon, 
+        title: 'Codeforces', 
+        description: 'Specialist | Max Rating: 1455', 
+        link: 'https://codeforces.com/profile/Nirmali18' 
+    },
+    { 
+        icon: assets.github_icon, 
+        title: 'GitHub', 
+        description: '15+ Projects | Full-stack & Competitive Programming Repositories', 
+        link: 'https://github.com/miruddin11' 
+    },
 ]
+
 
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'C++, Java, Python, HTML, CSS, JavaScript, React Js, Next Js, Node Js, Express Js, SQL' },

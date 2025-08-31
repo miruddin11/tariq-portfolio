@@ -28,15 +28,14 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
         { label: 'Coding Profiles', href: '#cp' },
         { label: 'Projects', href: '#projects' },
         { label: 'Experience', href: '#experience' },
-        { label: 'Education', href: '#academics' },
     ];
 
     return (
         <>
-            <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden'>
+            <div className='fixed top-0 right-0 w-full -z-10 translate-y-[-80%] dark:hidden'>
                 <Image src={assets.header_bg_color} alt="" className='w-full'/>
             </div>
-            <nav className={`w-full fixed top-0 left-0 px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-300 ${
+            <nav className={`w-full fixed top-0 left-0 px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between z-50 transition-all duration-300 ${
                 isScroll 
                     ? "bg-white/50 dark:bg-gray-900/50 backdrop-blur-md shadow-md dark:shadow-gray-800/20" 
                     : "bg-transparent"
@@ -44,8 +43,10 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
                 <a href="#top" className="hover:opacity-90 transition-opacity">
                     <Image 
                         src={isDarkMode ? assets.logo_dark : assets.logo} 
-                        className='w-28 cursor-pointer mr-14 transition-transform hover:scale-105' 
+                        className='w-36 cursor-pointer mr-6 sm:mr-8 transition-transform hover:scale-105' 
                         alt="Logo"
+                        width={144}
+                        height={40}
                     />
                 </a>
                 <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-8 py-2.5 transition-all duration-300 ${
