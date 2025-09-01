@@ -1,26 +1,33 @@
 'use client';
-import React, { useState, useEffect } from 'react';
-import { FaArrowUp } from 'react-icons/fa';
+import React, { useState, useEffect, useCallback } from 'react';
+import { FaRocket } from 'react-icons/fa';
 
 const ScrollToTop = ({ isDarkMode }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isLaunching, setIsLaunching] = useState(false);
 
   // Show button when page is scrolled down
-  const toggleVisibility = () => {
+  const toggleVisibility = useCallback(() => {
     if (window.scrollY > 300) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
     }
-  };
+  }, []);
 
-  // Scroll to top function
-  const scrollToTop = () => {
+  // Scroll to top function with launch animation
+  const scrollToTop = useCallback(() => {
+    setIsLaunching(true);
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  };
+    
+    // Reset launch animation after scroll completes
+    setTimeout(() => {
+      setIsLaunching(false);
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     // Add scrollbar styles
@@ -65,6 +72,28 @@ const ScrollToTop = ({ isDarkMode }) => {
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
       }
+
+      /* Rocket animations */
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+        100% { transform: translateY(0px); }
+      }
+
+      @keyframes launch {
+        0% { 
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% { 
+          transform: translateY(-100vh) scale(0.5);
+          opacity: 0;
+        }
+      }
+
+      .rocket-launch {
+        animation: launch 1s ease-out forwards;
+      }
     `;
     
     document.head.appendChild(style);
@@ -77,32 +106,37 @@ const ScrollToTop = ({ isDarkMode }) => {
         document.head.removeChild(existingStyle);
       }
     };
-  }, [isDarkMode]);
+  }, [isDarkMode, toggleVisibility]);
 
   return (
     <>
       {isVisible && (
         <div 
           onClick={scrollToTop} 
-          className='fixed right-4 sm:right-6 md:right-8 
+          className={`fixed right-4 sm:right-6 md:right-8 
                      bottom-4 sm:bottom-6 md:bottom-8 
-                     bg-blue-500 dark:bg-gray-700 
-                     hover:bg-blue-600 dark:hover:bg-gray-600
+                     bg-gradient-to-br from-blue-500 to-purple-600 
+                     dark:from-purple-700 dark:to-blue-800
+                     hover:from-blue-600 hover:to-purple-700 
+                     dark:hover:from-purple-800 dark:hover:to-blue-900
                      text-white 
                      rounded-full 
                      cursor-pointer 
                      shadow-lg
                      z-50 
                      flex items-center justify-center
-                     w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16
+                     w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18
                      transition-all duration-300
-                     hover:scale-110'
+                     hover:scale-110
+                     ${isLaunching ? 'rocket-launch' : 'animate-float'}`}
           style={{
-            boxShadow: '0 4px 15px rgba(59, 130, 246, 0.5)'
+            boxShadow: '0 4px 15px rgba(59, 130, 246, 0.5)',
+            animation: isLaunching ? 'none' : 'float 3s ease-in-out infinite'
           }}
           aria-label="Scroll to top"
         >
-          <FaArrowUp className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7' />
+          <FaRocket className={`w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 transform -rotate-45 ${isLaunching ? 'text-yellow-300' : 'text-white'}`} />
+          <div className={`absolute -bottom-1 w-6 h-1 bg-yellow-400 rounded-full blur-sm ${isLaunching ? 'animate-ping' : 'opacity-0'}`}></div>
         </div>
       )}
     </>

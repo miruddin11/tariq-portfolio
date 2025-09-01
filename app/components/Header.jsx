@@ -44,6 +44,7 @@ const Header = () => {
           "Competitive Programmer", 
           "Learner",
           "Contributor",
+          "Engineer",
         ],
         typeSpeed: 100,  
         backSpeed: 50,   
@@ -249,27 +250,47 @@ const Header = () => {
           initial={{y:-20, opacity: 0}}
           whileInView={{y:0, opacity: 1}}
           transition={{duration:0.6, delay:0.3}}
-          className='flex items-center justify-center gap-2 
-          text-xl md:text-2xl mb-3 font-Ovo text-gray-800 dark:text-white'
+          className='text-2xl md:text-3xl mb-3 font-bold text-center text-gray-800 dark:text-white font-["Ovo"]'
         >
-          Hi! I'm Mir Tariquddin 
-          <Image 
-            src={assets.hand_icon} 
-            alt='Wave' 
-            className='w-6 animate-wave'
-          />
+          <span className='relative inline-flex items-center'>
+            <span className='bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent'>
+              Hi! I'm Mir Tariquddin
+            </span>
+            <motion.span 
+              className='ml-2 text-3xl md:text-4xl inline-block'
+              animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+              transition={{
+                duration: 2.5,
+                ease: 'easeInOut',
+                repeat: Infinity,
+                repeatDelay: 1
+              }}
+            >
+              👋
+            </motion.span>
+          </span>
         </motion.h3>
 
-        <motion.h1 
-          initial={{y:-30, opacity: 0, letterSpacing: '-0.1em'}}
-          whileInView={{y:0, opacity: 1, letterSpacing: '0em'}}
+        <motion.div 
+          initial={{y:-30, opacity: 0}}
+          whileInView={{y:0, opacity: 1}}
           transition={{duration:0.8, delay:0.5}}
-          className='text-4xl sm:text-6xl lg:text-[66px] 
-          font-Ovo font-bold text-gray-800 dark:text-gray-300
-          mb-6'
+          className='w-full max-w-4xl mx-auto mb-6 font-["Ovo"]'
         >
-          Software Developer based in India
-        </motion.h1>
+          <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-[66px] font-bold font-Ovo text-center'>
+            <span className='relative inline-block'>
+              <span className='relative z-10 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent 
+                animate-gradient bg-[length:200%_auto]'>
+                Software Developer
+              </span>
+              <span className='absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full 
+                scale-x-0 group-hover:scale-x-100 transition-transform duration-300' />
+            </span>
+            <span className='block mt-2 text-2xl sm:text-3xl md:text-4xl font-medium text-gray-600 dark:text-gray-400'>
+              based in India
+            </span>
+          </h1>
+        </motion.div>
 
         <motion.p 
           initial={{opacity: 0, y: 20}}
