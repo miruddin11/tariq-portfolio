@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import ScrollToTop from "./components/ScrollToTop";
+import Achievements from "./components/Achievements";
 export default function Home() {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -44,6 +45,7 @@ export default function Home() {
     <Cp isDarkMode={isDarkMode}/>
     <Projects isDarkMode={isDarkMode}/>
     <Experience isDarkMode={isDarkMode}/>
+    <Achievements isDarkMode={isDarkMode}/>
     <Contact isDarkMode={isDarkMode}/>
     <Footer isDarkMode={isDarkMode}/>
     <ScrollToTop isDarkMode={isDarkMode}/>

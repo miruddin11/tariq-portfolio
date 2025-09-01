@@ -28,6 +28,7 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
         { label: 'Coding Profiles', href: '#cp' },
         { label: 'Projects', href: '#projects' },
         { label: 'Experience', href: '#experience' },
+        {label:'Achievements', href:'#achievements'},
     ];
 
     return (

@@ -41,6 +41,8 @@ import postgre from './postgre.png';
 import vite from './vite.png';
 import codechef from './codechef.png';
 import github_icon from './github_icon.png';
+import meta from './meta.png';
+import codevita from './codevita.png';
 
 
 export const assets = {
@@ -87,6 +89,8 @@ export const assets = {
     vite,
     codechef,
     github_icon,
+    meta,
+    codevita,
 };
 
 export const workData = [
